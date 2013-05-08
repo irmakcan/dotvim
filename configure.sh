@@ -2,3 +2,5 @@
 
 ln -s $(pwd)/vimrc ~/.vimrc
 ln -s $(pwd)/gvimrc ~/.gvimrc
+
+git submodule foreach git pull origin master
