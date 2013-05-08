@@ -4,7 +4,7 @@ call pathogen#helptags()
 
 syntax on
 filetype plugin indent on
- 
+
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -16,18 +16,18 @@ set incsearch
 set hlsearch
 " make searches case sensitive only if the contain upper-case chars
 set ignorecase smartcase
- 
+
 set wildmode=longest,list,full
 set wildmenu
- 
+
 set number
 nmap <C-N><C-N> :set invnumber<CR>
- 
+
 set pastetoggle=<F2>
- 
+
 " create hidden buffers easily
 set hidden
- 
+
 " CUSTOM AUTOCOMMANDS "
 augroup vimrcEx
   autocmd!
@@ -40,18 +40,18 @@ augroup vimrcEx
   autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
   autocmd FileType python set sw=4 sts=4 et
 augroup END
- 
+
 imap <c-l> <space>=><space>
- 
+
 " Enable snipmate
 :filetype plugin on
- 
+
 " Easier split navigation
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <C-h> <C-w>h
- 
+
 " MULTiPURPOSE TAB KEY
 " Indent if we are at the beginning of a line. Else, do completion.
 function! InsertTabWrapper()
@@ -64,13 +64,13 @@ function! InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
- 
+
 " ARROW KEYS ARE UNACCEPTABLE
 map <Left> :echo "no!"<cr>
 map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
- 
+
 function! RenameFile()
     let old_name = expand('%')
     let new_name = input('New file name: ', expand('%'))
@@ -81,7 +81,7 @@ function! RenameFile()
     endif
 endfunction
 map <leader>n :call RenameFile()<cr>
- 
+
 " PROMOTE VARIABLE TO RSPEC LET
 function! PromoteToLet()
     :normal! dd
@@ -92,7 +92,7 @@ function! PromoteToLet()
 endfunction
 :command! PromoteToLet :call PromoteToLet()
 :map <leader>p :PromoteToLet<cr>
- 
+
 " SWITCH BETWEEN TEST AND PRODUCTION CODE
 function! OpenTestAlternate()
     let new_file = AlternateForCurrnetFile()
@@ -120,26 +120,26 @@ function! AlternateForCurrnetFile()
     return new_file
 endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
- 
+
 function! RunTests(filename)
     " Write the file and run tests for the given filename
     :w
     :silent !echo;echo;echo;echo;echo
     exec ":!bundle exec rspec " . a:filename
 endfunction
- 
+
 function! SetTestFile()
     " Set the spec file that tests will be run for.
     let t:grb_test_file=@%
 endfunction
- 
+
 function! RunTestFile(...)
     if a:0
         let command_suffix = a:1
     else
         let command_suffix = ""
     endif
- 
+
     " Run the tests for the previously-marked file.
     let in_spec_file = match(expand("%"), '_spec.rb$') != -1
     if in_spec_file
@@ -149,12 +149,12 @@ function! RunTestFile(...)
     end
     call RunTests(t:grb_test_file . command_suffix)
 endfunction
- 
+
 function! RunNearestTest()
     let spec_line_number = line('.')
     call RunTestFile(":" . spec_line_number)
 endfunction
- 
+
 " Run this file
 map <leader>r :call RunTestFile()<cr>
 " " Run only the example under the cursor
@@ -162,11 +162,7 @@ map <leader>T :call RunNearestTest()<cr>
 " Run all test files
 map <leader>a :call RunTests('spec')<cr>
 " map <leader>a :call RunTests('spec')<cr>all pathogen#infect()
- 
-" Comment/Uncomment using K, Ctrl-K
-noremap   <buffer> K      :s,^\(\s*\)[^# \t]\@=,\1#,e<CR>:nohls<CR>zvj
-noremap   <buffer> <C-K>  :s,^\(\s*\)#\s\@!,\1,e<CR>:nohls<CR>zvj
- 
+
 " Reloads the state after executing the command
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
@@ -194,3 +190,15 @@ set listchars=tab:▸\ ,eol:¬
 "Invisible character colors
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
+
+" Comment/Uncomment using K, Ctrl-K
+noremap   <buffer> K      :s,^\(\s*\)[^# \t]\@=,\1#,e<CR>:nohls<CR>zvj
+noremap   <buffer> <C-K>  :s,^\(\s*\)#\s\@!,\1,e<CR>:nohls<CR>zvj
+
+
+if has("gui_macvim")
+  " set macvim specific stuff
+  colorscheme railscasts
+endif
+
+
