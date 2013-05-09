@@ -28,6 +28,11 @@ set pastetoggle=<F2>
 " create hidden buffers easily
 set hidden
 
+" snipmate trigger
+imap <C-J> <Plug>snipMateNextOrTrigger
+smap <C-J> <Plug>snipMateNextOrTrigger
+
+
 " CUSTOM AUTOCOMMANDS "
 augroup vimrcEx
   autocmd!
