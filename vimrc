@@ -213,6 +213,13 @@ let g:CommandTAcceptSelectionTabMap = '<CR>'
 
 autocmd BufNewFile,BufRead Gemfile,Guardfile,Rakefile set filetype=ruby
 
+" Open NERDTree if no files specified
+autocmd vimenter * if !argc() | NERDTree | endif
+" Close vim if the only window left open is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Toggle NERDTree
+nmap <silent> <C-D> :NERDTreeToggle<CR>
+
 if has("gui_macvim")
   " set macvim specific stuff
   " colors was not loaded if defined in gvimrc
