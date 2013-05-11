@@ -1,10 +1,20 @@
 #! /bin/sh
 
 mkdir tmp/
-mv ~/.vimrc tmp/vimrc
-mv ~/.gvimrc tmp/gvimrc
+
+if [[ -L ~/.vimrc ]]; then
+    rm ~/.vimrc
+else
+    mv ~/.vimrc tmp/vimrc
+fi
+
+if [[ -L ~/.gvimrc ]]; then
+    rm ~/.gvimrc
+else
+    mv ~/.gvimrc tmp/gvimrc
+fi
+echo "Backedup existing vimrcs into tmp/"
 
 ln -s $(pwd)/vimrc ~/.vimrc
 ln -s $(pwd)/gvimrc ~/.gvimrc
-
-git submodule foreach git pull origin master
+echo "linked vimrcs"
