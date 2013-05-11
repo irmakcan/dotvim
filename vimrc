@@ -50,6 +50,8 @@ imap <c-l> <space>=><space>
 
 " Enable snipmate
 :filetype plugin on
+" Load html snippets on erb files
+au BufNewFile,BufRead *.html.erb set filetype=xml.eruby.html
 
 " Easier split navigation
 nmap <C-j> <C-w>j
@@ -200,10 +202,28 @@ highlight SpecialKey guifg=#4a4a59
 noremap   <buffer> K      :s,^\(\s*\)[^# \t]\@=,\1#,e<CR>:nohls<CR>zvj
 noremap   <buffer> <C-K>  :s,^\(\s*\)#\s\@!,\1,e<CR>:nohls<CR>zvj
 
+map <F10> <ESC>:tabnew ~/.vimrc<CR>
+map <F12> <ESC>:w<CR>:!irb -r %:p<CR>
+
+" Reload cache
+noremap <F5> :CommandTFlush<CR>
+" Open in new tab by default
+let g:CommandTAcceptSelectionMap = '<C-t>'
+let g:CommandTAcceptSelectionTabMap = '<CR>'
+
+autocmd BufNewFile,BufRead Gemfile,Guardfile,Rakefile set filetype=ruby
 
 if has("gui_macvim")
   " set macvim specific stuff
+  " colors was not loaded if defined in gvimrc
   colorscheme railscasts
+elseif has("gui_running") 
+  " gvim stuff
+  " make backspace work like most other apps
+  set backspace=2 
+  set backspace=indent,eol,start
+else
+  " only terminal vim specific stuff
+  set background=dark
+  colorscheme solarized
 endif
-
-
