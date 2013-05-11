@@ -6,9 +6,9 @@ syntax on
 filetype plugin indent on
 
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 set laststatus=2
 set showmatch
@@ -224,6 +224,10 @@ elseif has("gui_running")
   set backspace=indent,eol,start
 else
   " only terminal vim specific stuff
-  set background=dark
-  colorscheme solarized
+  if $COLORTERM == 'gnome-terminal' 
+    set t_Co=256
+    colorscheme railscasts 
+  else
+    colorscheme default 
+  endif
 endif
