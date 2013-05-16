@@ -212,6 +212,7 @@ let g:CommandTAcceptSelectionMap = '<C-t>'
 let g:CommandTAcceptSelectionTabMap = '<CR>'
 
 autocmd BufNewFile,BufRead Gemfile,Guardfile,Rakefile set filetype=ruby
+autocmd BufNewFile,BufRead *.rabl,*.jbuilder set filetype=ruby
 
 " Open NERDTree if no files specified
 autocmd vimenter * if !argc() | NERDTree | endif
