@@ -232,7 +232,8 @@ elseif has("gui_running")
   set backspace=indent,eol,start
 else
   " only terminal vim specific stuff
-  if $COLORTERM == 'gnome-terminal' 
+  " check for 256 color supported terminal
+  if $COLORTERM == 'gnome-terminal' || $TERM == 'xterm-256color'
     set t_Co=256
     colorscheme railscasts 
   else
