@@ -36,11 +36,11 @@ If you do not have access or cannot send pull reqests, fork the repo and configu
 
 Plugins:
 --------
-
-To enable Command-T run these:
-
-``` sh
-cd ~/.vim/bundle/command-t/ruby/command-t
-ruby extconf.rb
-make
-```
+1. **ctrlp**: Fuzzy file finder.
+2. **nerdtree**: Tree explorer.
+3. **vim-snipmate**: TextMate style snippets.
+4. **vim-snippets**: Snippets for snipmate.
+5. **vim-colors-solarized**: Solarized colorscheme for vim.
+6. **vim-railscasts-theme**: A beautiful theme for ruby development.
+7. **tlib_vim**: Some utility functions for other plugins.
+8. **vim-addon-mw-utils**: Some utility functions for other plugins.
