@@ -205,11 +205,9 @@ noremap   <buffer> <C-K>  :s,^\(\s*\)#\s\@!,\1,e<CR>:nohls<CR>zvj
 map <F10> <ESC>:tabnew ~/.vimrc<CR>
 map <F12> <ESC>:w<CR>:!irb -r %:p<CR>
 
-" Reload cache
-noremap <F5> :CommandTFlush<CR>
-" Open in new tab by default
-let g:CommandTAcceptSelectionMap = '<C-t>'
-let g:CommandTAcceptSelectionTabMap = '<CR>'
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 autocmd BufNewFile,BufRead Gemfile,Guardfile,Rakefile,Podfile set filetype=ruby
 autocmd BufNewFile,BufRead *.rabl,*.jbuilder set filetype=ruby
