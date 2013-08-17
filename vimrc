@@ -238,3 +238,28 @@ else
     colorscheme default 
   endif
 endif
+
+" Replace all characters
+function! ReplaceAllCharsInFile(old_char, new_char)
+  execute ":%s/" . a:old_char . "/" . a:new_char . "/ge"
+endfunction
+
+" Substitude Turkish chars
+function! SubstituteTurkishChars()
+  " Common chars
+  call ReplaceAllCharsInFile("Ý", "İ")
+  call ReplaceAllCharsInFile("ý", "ı")
+
+  call ReplaceAllCharsInFile("Þ", "Ş")
+  call ReplaceAllCharsInFile("þ", "ş")
+
+  call ReplaceAllCharsInFile("Ð", "Ğ")
+  call ReplaceAllCharsInFile("ð", "ğ")
+
+  let filename=expand("%:t:r")
+  let extension=expand("%:e")
+  execute "w! ++enc=utf-8 " . filename . "_converted" . "." . extension
+endfunction
+
+:command ConvertTurkishChars :call SubstituteTurkishChars()
+:command ReplaceTurkishChars :call SubstituteTurkishChars()
