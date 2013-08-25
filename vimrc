@@ -32,6 +32,8 @@ set hidden
 imap <C-J> <Plug>snipMateNextOrTrigger
 smap <C-J> <Plug>snipMateNextOrTrigger
 
+" Substitute selected text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " CUSTOM AUTOCOMMANDS "
 augroup vimrcEx
