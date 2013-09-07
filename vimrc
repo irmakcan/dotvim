@@ -265,3 +265,11 @@ endfunction
 
 :command ConvertTurkishChars :call SubstituteTurkishChars()
 :command ReplaceTurkishChars :call SubstituteTurkishChars()
+
+
+" Disable bell sound
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
+
