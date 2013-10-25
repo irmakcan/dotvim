@@ -273,3 +273,9 @@ if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
 
+" Format json file
+function! FormatJSON()
+  :%!python -m json.tool
+endfunction
+
+:command FormatJSON :call FormatJSON()
