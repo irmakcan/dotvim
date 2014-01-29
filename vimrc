@@ -14,6 +14,10 @@ set laststatus=2
 set showmatch
 set incsearch
 set hlsearch
+
+set backspace=2 
+set backspace=indent,eol,start
+
 " make searches case sensitive only if the contain upper-case chars
 set ignorecase smartcase
 
