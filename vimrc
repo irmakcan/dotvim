@@ -260,7 +260,7 @@ function! SubstituteTurkishChars()
 
   let filename=expand("%:t:r")
   let extension=expand("%:e")
-  execute "w! ++enc=utf-8 " . filename . "_converted" . "." . extension
+  execute "w! ++enc=utf-8 " . filename . "." . extension
 endfunction
 
 :command ConvertTurkishChars :call SubstituteTurkishChars()
