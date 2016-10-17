@@ -216,7 +216,7 @@ map <F12> <ESC>:w<CR>:!irb -r %:p<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-autocmd BufNewFile,BufRead Gemfile,Guardfile,Rakefile,Podfile set filetype=ruby
+autocmd BufNewFile,BufRead Gemfile,Guardfile,Rakefile,Podfile,Snapfile set filetype=ruby
 autocmd BufNewFile,BufRead *.rabl,*.jbuilder set filetype=ruby
 
 " Open NERDTree if no files specified
