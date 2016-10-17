@@ -14,6 +14,7 @@ set laststatus=2
 set showmatch
 set incsearch
 set hlsearch
+set nowrap
 
 set backspace=2 
 set backspace=indent,eol,start
