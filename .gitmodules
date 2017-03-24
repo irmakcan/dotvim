@@ -26,3 +26,6 @@
 	path = bundle/lightline
 	url = https://github.com/itchyny/lightline.vim.git
   ignore = dirty
+[submodule "bundle/vim-renamer"]
+	path = bundle/vim-renamer
+	url = https://github.com/qpkorr/vim-renamer

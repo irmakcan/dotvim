@@ -313,3 +313,7 @@ function! FormatXML()
   exe "set ft=" . l:origft
 endfunction
 command! FormatXML call FormatXML()
+
+" Renamer Plugin
+let g:RenamerSupportColonWToRename = 1
+
