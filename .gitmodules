@@ -29,3 +29,6 @@
 [submodule "bundle/vim-renamer"]
 	path = bundle/vim-renamer
 	url = https://github.com/qpkorr/vim-renamer
+[submodule "bundle/vim-easy-align"]
+	path = bundle/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align
