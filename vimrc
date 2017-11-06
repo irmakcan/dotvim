@@ -1,5 +1,4 @@
-" execute pathogen#infect()
-call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()
 call pathogen#helptags()
 
 syntax on
