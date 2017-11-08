@@ -1,6 +1,8 @@
 execute pathogen#infect()
 call pathogen#helptags()
 
+source $HOME/.vim/vundle
+
 syntax on
 filetype plugin indent on
 
