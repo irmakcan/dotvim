@@ -1,7 +1,6 @@
-colorscheme railscasts
 
 if has("gui_macvim")
-
+  " MacVim stuff
 else
   " gvim stuff
 
