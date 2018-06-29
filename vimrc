@@ -27,12 +27,13 @@ Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
 
 " Plugins for C# development
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'vim-syntastic/syntastic' " Investigate
+Plug 'OmniSharp/omnisharp-vim', { 'for': 'csharp' }
+Plug 'vim-syntastic/syntastic', { 'for': 'csharp' } " Investigate
 Plug 'Valloric/YouCompleteMe' " Investigate
 
 Plug 'jiangmiao/auto-pairs'
 
+"Plug 'ervandew/supertab' " Use supertab for YouCompleteMe & UltiSnips integration
 Plug 'elzr/vim-json', { 'for': ['json'] } "Json only plugin
 " Plugin 'MarcWeber/vim-addon-mw-utils'
 " Plugin 'tomtom/tlib_vim'
@@ -57,6 +58,7 @@ else
   "colorscheme base16-default-light
 endif
 
+set mouse=a
 
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
@@ -276,10 +278,12 @@ set completeopt=longest,menuone,preview
 "You might also want to look at the echodoc plugin
 set splitbelow
 
+let g:Omnisharp_start_server = 0
 " Get Code Issues and syntax errors
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+" let g:OmniSharp_server_type = 'roslyn'
 " If you are using the omnisharp-roslyn backend, use the following
-" let g:syntastic_cs_checkers = ['code_checker']
+"let g:syntastic_cs_checkers = ['code_checker']
 augroup omnisharp_commands
   autocmd!
 
@@ -291,7 +295,7 @@ augroup omnisharp_commands
   " Builds can also run asynchronously with vim-dispatch installed
   autocmd FileType cs nnoremap <leader>b :wa!<cr>:OmniSharpBuildAsync<cr>
   " automatic syntax check on events (TextChanged requires Vim 7.4)
-  autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+  autocmd BufEnter,BufWritePost *.cs SyntasticCheck
 
   " Automatically add new cs files to the nearest project on save
   autocmd BufWritePost *.cs call OmniSharp#AddToProject()
@@ -388,4 +392,29 @@ augroup vimrcEx
         \ endif
 
 augroup END
+
+let g:UltiSnipsExpandTrigger = "<nop>"
+let g:ulti_expand_or_jump_res = 0
+function ExpandSnippetOrCarriageReturn()
+    let snippet = UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+        return snippet
+    else
+        return "\<CR>"
+    endif
+endfunction
+inoremap <expr> <CR> "<C-R>=ExpandSnippetOrCarriageReturn()<CR>"
+
+" make YCM compatible with UltiSnips (using supertab)
+"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+"let g:UltiSnipsExpandTrigger="<cr>"
+"let g:UltiSnipsJumpForwardTrigger="<c-j>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"
+"
+let g:ycm_use_ultisnips_completer = 1
 
