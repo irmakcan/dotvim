@@ -1,4 +1,6 @@
 set nocompatible
+scriptencoding utf-8
+set encoding=utf-8
 
 " === junegunn/vim-plug === "
 call plug#begin('~/.vim/plugged')
