@@ -2,6 +2,11 @@ set nocompatible
 scriptencoding utf-8
 set encoding=utf-8
 
+" WARNING: REMOVE THIS WHEN DEPRECATION WARNING IS FIXED
+if has('python3')
+  silent! python3 1
+endif
+
 " === junegunn/vim-plug === "
 call plug#begin('~/.vim/plugged')
 
@@ -13,6 +18,7 @@ Plug 'altercation/vim-colors-solarized'
 "Plug 'jpo/vim-railscasts-theme'
 
 " Helpers
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 
 Plug 'ctrlpvim/ctrlp.vim'
@@ -28,6 +34,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
 
+Plug 'keith/swift.vim', { 'for': 'swift' }
+
 " Plugins for C# development
 Plug 'OmniSharp/omnisharp-vim', { 'for': 'csharp' }
 Plug 'vim-syntastic/syntastic', { 'for': 'csharp' } " Investigate
@@ -41,6 +49,10 @@ Plug 'elzr/vim-json', { 'for': ['json'] } "Json only plugin
 " Plugin 'tomtom/tlib_vim'
 " Plugin 'garbas/vim-snipmate'
 " Plugin 'irmakcan/vim-snippets' " Update the clone if necessary
+
+" Ruby & Rails
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-bundler'
 
 call plug#end()
 
