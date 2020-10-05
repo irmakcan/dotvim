@@ -2,10 +2,7 @@ set nocompatible
 scriptencoding utf-8
 set encoding=utf-8
 
-" WARNING: REMOVE THIS WHEN DEPRECATION WARNING IS FIXED
-if has('python3')
-  silent! python3 1
-endif
+set pythonthreedll=/usr/local/bin/python3
 
 " === junegunn/vim-plug === "
 call plug#begin('~/.vim/plugged')

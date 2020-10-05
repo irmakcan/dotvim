@@ -25,7 +25,7 @@ function! Irmak#RenameFile() abort
   endif
   let new_name = input('Rename file: ', s:current_file_name)
   exec ':Rename ' . new_name
-endfunction 
+endfunction
 
 " Replace all characters
 function! Irmak#ReplaceAllCharsInFile(old_char, new_char)
